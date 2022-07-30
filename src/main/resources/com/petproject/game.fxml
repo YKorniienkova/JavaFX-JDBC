@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #060142;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petproject.controllers.GameControllers">
+   <children>
+      <AnchorPane layoutY="80.0" prefHeight="518.0" prefWidth="800.0" style="-fx-background-color: #3C367D;">
+         <children>
+            <Button fx:id="but50" layoutX="100.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but51" layoutX="220.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but52" layoutX="340.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but53" layoutX="460.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but54" layoutX="580.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but40" layoutX="100.0" layoutY="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but30" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but20" layoutX="100.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but10" layoutX="100.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but41" layoutX="220.0" layoutY="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but42" layoutX="340.0" layoutY="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but43" layoutX="460.0" layoutY="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but44" layoutX="580.0" layoutY="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but31" layoutX="220.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but33" layoutX="460.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but34" layoutX="580.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but32" layoutX="340.0" layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but14" layoutX="580.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but24" layoutX="580.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but23" layoutX="460.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but13" layoutX="460.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but22" layoutX="340.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but21" layoutX="220.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but12" layoutX="340.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="but11" layoutX="220.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="bet500" layoutX="99.0" layoutY="442.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Place a bet" />
+            <TextField fx:id="betf" layoutX="208.0" layoutY="442.0" promptText="Bet" />
+            <Label fx:id="balancelabel" layoutX="208.0" layoutY="392.0" prefHeight="18.0" prefWidth="192.0" text="Balance:" textFill="#ff8888">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="balancebutton" layoutX="99.0" layoutY="389.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Check balance" />
+            <Button fx:id="nextb" layoutX="658.0" layoutY="426.0" mnemonicParsing="false" text="Play again" />
+            <Button fx:id="stopb" layoutX="542.0" layoutY="425.0" mnemonicParsing="false" text="Stop" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="resultl" layoutX="167.0" layoutY="439.0" />
+      <Label fx:id="winl" layoutX="270.0" layoutY="431.0" />
+      <Label layoutX="234.0" layoutY="20.0" prefHeight="18.0" prefWidth="359.0" text="Try your luck..." textFill="#b90808">
+         <font>
+            <Font name="Elephant" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

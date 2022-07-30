@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #060142;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petproject.controllers.OpenPageController">
+   <children>
+      <AnchorPane layoutY="80.0" prefHeight="518.0" prefWidth="800.0" style="-fx-background-color: #3C367D;">
+         <children>
+            <Label layoutX="300.0" layoutY="28.0" prefHeight="27.0" prefWidth="115.0" text="Authorization" textFill="#ff9c9c">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Button id="buttonSignIn" fx:id="buttonSignIn" layoutX="137.0" layoutY="321.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="106.0" text="Sign In" />
+            <Button id="buttonSignUp" fx:id="buttonSignUp" layoutX="415.0" layoutY="321.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="106.0" text="Sign Up" />
+            <TextField fx:id="emailField" layoutX="116.0" layoutY="101.0" promptText="email" />
+            <PasswordField fx:id="passwordField" layoutX="116.0" layoutY="153.0" promptText="password" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="234.0" layoutY="20.0" prefHeight="18.0" prefWidth="359.0" text="Try your luck..." textFill="#b90808">
+         <font>
+            <Font name="Elephant" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
