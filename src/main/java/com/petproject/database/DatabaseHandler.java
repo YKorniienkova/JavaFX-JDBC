@@ -21,8 +21,9 @@ public class DatabaseHandler extends Configs {
                 + dbPort + "/" + dbName + "?" + "autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         Class.forName("com.mysql.cj.jdbc.Driver");
         dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
-
+        System.out.println(dbConnection);
         return dbConnection;
+
     }
     public void signUpUser(User user) throws SQLException, ClassNotFoundException {
         String insert= "INSERT INTO "+Const.USER_TABLE+"("+Const.USERS_NAME+","+Const.USERS_LASTNAME+","+Const.USERS_LOGIN
@@ -164,6 +165,16 @@ public class DatabaseHandler extends Configs {
         prSt.executeUpdate();
 
     }
+    public void balanceMinusBet(int id) throws SQLException, ClassNotFoundException {
+
+        String setBalancee = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BALANCE+"="
+                +Const.USERS_BALANCE+"-"+Const.USERS_BETF+
+                " WHERE "+Const.USERS_ID+"="+id;
+
+        PreparedStatement prSt=getDbConnection().prepareStatement(setBalancee);
+        prSt.executeUpdate();
+
+    }
     public void createBet(int id, User user) throws SQLException, ClassNotFoundException {
         String createBet = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BETF +"=? "+" WHERE "+Const.USERS_ID+"="+id;
         PreparedStatement prSt=getDbConnection().prepareStatement(createBet);
@@ -192,6 +203,7 @@ public class DatabaseHandler extends Configs {
             prStf.executeUpdate();
 
     }
+
 
 
 

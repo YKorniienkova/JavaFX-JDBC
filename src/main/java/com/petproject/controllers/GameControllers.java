@@ -1,8 +1,9 @@
 package com.petproject.controllers;
 
 import java.io.IOException;
+import java.math.RoundingMode;
 import java.sql.SQLException;
-import java.util.function.DoubleBinaryOperator;
+import java.text.DecimalFormat;
 
 import com.petproject.User;
 import com.petproject.database.DatabaseHandler;
@@ -10,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,8 +24,7 @@ public class GameControllers {
 
 
 
-        @FXML
-        private Button balancebutton;
+
 
         @FXML
         private Label balancelabel;
@@ -122,14 +121,40 @@ public class GameControllers {
 
         @FXML
         private Label winl;
+        @FXML
+        private Button regulationsb;
 
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException, ClassNotFoundException {
+        getBalance();
+        disable1();
         disable2();
         disable3();
         disable4();
         disable5();
+        negativeBalance();
+        regulationsb.setOnAction(event->{
+            regulationsb.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/com/petproject/regulations.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            try {
+                cancelBet();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
         nextb.setOnAction(event->{
             nextb.getScene().getWindow().hide();
 
@@ -151,19 +176,19 @@ public class GameControllers {
                 throw new RuntimeException(e);
             }
         });
-        balancebutton.setOnAction(event -> {
-            DatabaseHandler dbHandler= null;
-            try {
-                dbHandler = new DatabaseHandler();
-            } catch (SQLException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                balancelabel.setText("Balance: "+dbHandler.getBalance(id_us));
-            } catch (SQLException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
+//        balancebutton.setOnAction(event -> {
+//            DatabaseHandler dbHandler= null;
+//            try {
+//                dbHandler = new DatabaseHandler();
+//            } catch (SQLException | ClassNotFoundException e) {
+//                throw new RuntimeException(e);
+//            }
+//            try {
+//                balancelabel.setText("Balance: "+dbHandler.getBalance(id_us));
+//            } catch (SQLException | ClassNotFoundException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
         int[] apples1 = new int[5];
         met(apples1);
         but10.setOnAction(event -> {
@@ -415,14 +440,33 @@ public class GameControllers {
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
+
         });
 
-        bet500.setOnAction(evnt->{
+        bet500.setOnAction(event->{
+
             try {
                 createBet(id_us);
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
+            DatabaseHandler db = null;
+            try {
+                db=new DatabaseHandler();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                db.setBalanceMinus(id_us);
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                getBalance();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            disableBet();
         });
 
     }
@@ -484,6 +528,7 @@ public class GameControllers {
 //        User user = new User(bet);
 //        dbHandler.getBalance(id_us);
 //    }
+
     public void win(){
         DatabaseHandler dbHandler= null;
         try {
@@ -497,7 +542,10 @@ public class GameControllers {
             throw new RuntimeException(e);
         }
         try {
-            resultl.setText("You won "+dbHandler.getBetWin(id_us));
+            double balance = Double.parseDouble(dbHandler.getBetWin(id_us));
+            DecimalFormat decimalFormat = new DecimalFormat( "#.###" );
+            String result = decimalFormat.format(balance);
+            resultl.setText("You won "+result);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -517,7 +565,10 @@ public class GameControllers {
             throw new RuntimeException(e);
         }
         try {
-            resultl.setText("You won "+dbHandler.getBetWin(id_us));
+            double balance = Double.parseDouble(dbHandler.getBetWin(id_us));
+            DecimalFormat decimalFormat = new DecimalFormat( "#.###" );
+            String result = decimalFormat.format(balance);
+            resultl.setText("You won "+result);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -542,7 +593,10 @@ public class GameControllers {
             throw new RuntimeException(e);
         }
         try {
-            resultl.setText("You won "+dbHandler.getBetWin(id_us));
+            double balance = Double.parseDouble(dbHandler.getBetWin(id_us));
+            DecimalFormat decimalFormat = new DecimalFormat( "#.###" );
+            String result = decimalFormat.format(balance);
+            resultl.setText("You won "+result);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -567,7 +621,10 @@ public class GameControllers {
             throw new RuntimeException(e);
         }
         try {
-            resultl.setText("You won "+dbHandler.getBetWin(id_us));
+            double balance = Double.parseDouble(dbHandler.getBetWin(id_us));
+            DecimalFormat decimalFormat = new DecimalFormat( "#.###" );
+            String result = decimalFormat.format(balance);
+            resultl.setText("You won "+result);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -592,7 +649,10 @@ public class GameControllers {
             throw new RuntimeException(e);
         }
         try {
-            resultl.setText("You won "+dbHandler.getBetWin(id_us));
+            double balance = Double.parseDouble(dbHandler.getBetWin(id_us));
+            DecimalFormat decimalFormat = new DecimalFormat( "#.###" );
+            String result = decimalFormat.format(balance);
+            resultl.setText("You won "+result);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -610,31 +670,32 @@ public class GameControllers {
         db=new DatabaseHandler();
         winl.setText(db.getBetWin(id_us));
     }
-    public void noWin(){
+    public void getBalance() throws SQLException, ClassNotFoundException {
+
         DatabaseHandler db = null;
         try {
             db=new DatabaseHandler();
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        try {
-            db.setBalanceMinus(id_us);
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            balancelabel.setText("Balance: "+db.getBalance(id_us));
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-            resultl.setText("You didn't win ");
+        double balance = db.getBalance(id_us);
+        DecimalFormat decimalFormat = new DecimalFormat( "#.###" );
+        String result = decimalFormat.format(balance);
+        balancelabel.setText("Balance: "+result);
+
+    }
+    public void noWin(){
+
+            resultl.setText("You didn't win, try again! ");
 
         disable2();
         disable3();
         disable4();
         disable5();
+        bet500.setDisable(true);
 
     }
+
     public void winBet() throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler= null;
         try {
@@ -644,7 +705,10 @@ public class GameControllers {
         }
         dbHandler.setBalancePlus(id_us);
         try {
-            balancelabel.setText("Balance: "+dbHandler.getBalance(id_us));
+            double balance = dbHandler.getBalance(id_us);
+            DecimalFormat decimalFormat = new DecimalFormat( "#.###" );
+            String result = decimalFormat.format(balance);
+            balancelabel.setText("Balance: "+result);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -692,6 +756,14 @@ public class GameControllers {
         but53.setDisable(true);
         but54.setDisable(true);
     }
+
+    public void able1(){
+        but10.setDisable(false);
+        but11.setDisable(false);
+        but12.setDisable(false);
+        but13.setDisable(false);
+        but14.setDisable(false);
+    }
     public void able2(){
         but20.setDisable(false);
         but21.setDisable(false);
@@ -720,12 +792,23 @@ public class GameControllers {
         but53.setDisable(false);
         but54.setDisable(false);
     }
+    public void disableBet(){
+        bet500.setDisable(true);
+    }
 
     private void createBet(int id_us) throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         String bet = betf.getText();
-        User user = new User(bet);
-        dbHandler.createBet(id_us, user);
+        double betdouble = Double.parseDouble(bet);
+
+        if (betdouble<=dbHandler.getBalance(id_us)){
+            User user = new User(bet);
+            dbHandler.createBet(id_us, user);
+            able1();
+        }
+        else {
+            winl.setText("You cannot place a bet that is higher than your balance");
+        }
     }
 
     private void cancelBet() throws SQLException, ClassNotFoundException {
@@ -733,7 +816,27 @@ public class GameControllers {
         db = new DatabaseHandler();
         db.cancelBet(id_us);
     }
+    public void negativeBalance() throws SQLException, ClassNotFoundException {
+        DatabaseHandler db = null;
+        try {
+            db=new DatabaseHandler();
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        double balance = db.getBalance(id_us);
+        if (balance<=0){
+            winl.setText("Sorry, but you have no funds on your account, you cannot continue playing ;( ");
+            disableBet();
+            disable1();
+            disable2();
+            disable3();
+            disable4();
+            disable5();
+            stopb.setDisable(true);
+            nextb.setDisable(true);
+        }
 
+    }
 
 
 }

@@ -2,6 +2,7 @@ module com.petproject {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires org.junit.jupiter.api;
 
 
     opens com.petproject to javafx.fxml;

@@ -54,7 +54,6 @@ public class OpenPageController {
                     throw new RuntimeException(e);
                 }
             }
-            else System.out.println("Лох");
             DatabaseHandler db = null;
             try {
                 db  = new DatabaseHandler();
@@ -106,7 +105,7 @@ public class OpenPageController {
             id = result.getInt(1);
         }
         if (count==1) {
-            buttonSignIn.setOnAction(event -> {
+            //buttonSignIn.setOnAction(event -> {
 //                int id = 0;
 //                try {
 //                    id = result.getInt(1);
@@ -115,14 +114,13 @@ public class OpenPageController {
 //                }
                 OpenPlayPage("/com/petproject/game.fxml");
                 //System.out.println(id);
-            });
+            //});
         }
         else{
             Shake userLogAnim = new Shake(emailField);
             Shake  userLogPass = new Shake(passwordField);
             userLogAnim.playAnim();
             userLogPass.playAnim();
-            System.out.println("OK");
         }
     }
 

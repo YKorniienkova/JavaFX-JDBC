@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #060142;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petproject.controllers.GameControllers">
    <children>
-      <AnchorPane layoutY="80.0" prefHeight="518.0" prefWidth="800.0" style="-fx-background-color: #3C367D;">
+      <AnchorPane layoutY="81.0" prefHeight="518.0" prefWidth="800.0" style="-fx-background-color: #3C367D;">
          <children>
             <Button fx:id="but50" layoutX="100.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
             <Button fx:id="but51" layoutX="220.0" layoutY="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
@@ -35,20 +35,28 @@
             <Button fx:id="but21" layoutX="220.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
             <Button fx:id="but12" layoutX="340.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
             <Button fx:id="but11" layoutX="220.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="bet500" layoutX="99.0" layoutY="442.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Place a bet" />
-            <TextField fx:id="betf" layoutX="208.0" layoutY="442.0" promptText="Bet" />
-            <Label fx:id="balancelabel" layoutX="208.0" layoutY="392.0" prefHeight="18.0" prefWidth="192.0" text="Balance:" textFill="#ff8888">
+            <Button fx:id="bet500" layoutX="100.0" layoutY="424.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Place a bet" />
+            <TextField fx:id="betf" layoutX="213.0" layoutY="424.0" promptText="Bet" />
+            <Label fx:id="balancelabel" layoutX="100.0" layoutY="472.0" prefHeight="18.0" prefWidth="192.0" text="Balance:" textFill="#ff8888">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="balancebutton" layoutX="99.0" layoutY="389.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Check balance" />
-            <Button fx:id="nextb" layoutX="658.0" layoutY="426.0" mnemonicParsing="false" text="Play again" />
-            <Button fx:id="stopb" layoutX="542.0" layoutY="425.0" mnemonicParsing="false" text="Stop" />
+            <Button fx:id="nextb" layoutX="630.0" layoutY="432.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Play again" />
+            <Button fx:id="stopb" layoutX="530.0" layoutY="432.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Stop" />
+            <Label fx:id="winl" layoutX="91.0" layoutY="382.0" prefHeight="27.0" prefWidth="645.0" textFill="#f21f1f">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="resultl" layoutX="260.0" layoutY="383.0" prefHeight="26.0" prefWidth="19.0" textFill="#ff1717ef" AnchorPane.bottomAnchor="109.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="regulationsb" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #ff0005;" text="Rules" />
          </children>
       </AnchorPane>
-      <Label fx:id="resultl" layoutX="167.0" layoutY="439.0" />
-      <Label fx:id="winl" layoutX="270.0" layoutY="431.0" />
       <Label layoutX="234.0" layoutY="20.0" prefHeight="18.0" prefWidth="359.0" text="Try your luck..." textFill="#b90808">
          <font>
             <Font name="Elephant" size="40.0" />
