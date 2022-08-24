@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #060142;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petproject.controllers.RegulationsController">
+   <children>
+      <AnchorPane layoutY="80.0" prefHeight="518.0" prefWidth="800.0" style="-fx-background-color: #3C367D;">
+         <children>
+            <Label layoutX="342.0" layoutY="28.0" prefHeight="27.0" prefWidth="115.0" text="Rules" textFill="#ff9c9c">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="74.0" layoutY="68.0" prefHeight="337.0" prefWidth="671.0" text="Your balance is instantly displayed on your screen. You must place a bet to start playing. There are 5 rows of buttons on the playing field. Each level is harder and unlocks if you win the previous one. In the 1st and 2nd row there are 4 winning and 1 losing buttons, in the 3rd row 3 winning and 2 losing buttons, in the 4th row 2 winning and 3 losing buttons, in the 5th row 4 and 1 similarly. The higher the row, the higher the odds of winning your bet. To withdraw the amount you have won, click on the Stop button, without this button you will not receive the earned points. If you lose, just click on the Play Again button" textFill="#ffe5e5" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="backb" layoutX="631.0" layoutY="456.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="123.0" text="back to the game" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="234.0" layoutY="20.0" prefHeight="18.0" prefWidth="359.0" text="Try your luck..." textFill="#b90808">
+         <font>
+            <Font name="Elephant" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
