@@ -7,13 +7,9 @@ public class Const {
     public static final String USERS_LASTNAME="lastname";
     public static final String USERS_LOGIN="login";
     public static final String USERS_PASSWORD="password";
-    public static final String USERS_DATE="birthday";
-    public static final String USERS_PHONE="phone";
     public static final String USERS_BALANCE="balancedouble";
-
-    public static final String USERS_BETF ="betf";
-
-    public static final String USER_BETRES="betre";
+    public static final String USERS_BETF ="bet";
+    public static final String USER_BETRES="betres";
 
 
 }

@@ -49,7 +49,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="resultl" layoutX="260.0" layoutY="383.0" prefHeight="26.0" prefWidth="19.0" textFill="#ff1717ef" AnchorPane.bottomAnchor="109.0">
+            <Label fx:id="resultl" layoutX="189.0" layoutY="382.0" prefHeight="26.0" prefWidth="422.0" textFill="#ff1717ef" AnchorPane.bottomAnchor="110.0">
                <font>
                   <Font size="16.0" />
                </font>

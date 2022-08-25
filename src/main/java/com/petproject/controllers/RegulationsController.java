@@ -24,6 +24,7 @@ public class RegulationsController {
 
     @FXML
     void initialize() {
+        //go to game page on button click
        backb.setOnAction(event->{
            backb.getScene().getWindow().hide();
 
@@ -38,6 +39,7 @@ public class RegulationsController {
            Parent root = loader.getRoot();
            Stage stage = new Stage();
            stage.setScene(new Scene(root));
+           stage.setTitle("Yelyzaveta Korniienkova");
            stage.show();
        });
 

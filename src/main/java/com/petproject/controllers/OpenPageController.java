@@ -12,7 +12,6 @@ import com.petproject.database.Const;
 import com.petproject.database.DatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,15 +35,20 @@ public class OpenPageController {
     private Button buttonSignUp;
 
     @FXML
-    private TextField emailField;
+    private TextField loginField;
 
     @FXML
     private PasswordField passwordField;
 
+    private static int id;
+
     @FXML
     void initialize() {
+        //when you click on the SignIn button, if the user is NOT found in
+        // the database or the fields are empty, the fields move, otherwise
+        // the page with the game is redirected
         buttonSignIn.setOnAction(event ->{
-            String loginText = emailField.getText().trim();
+            String loginText = loginField.getText().trim();
             String loginPassword = passwordField.getText().trim();
 
             if(!loginText.equals("") && !loginPassword.equals("")){
@@ -53,6 +57,12 @@ public class OpenPageController {
                 } catch (SQLException | ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
+            }
+            else{
+                Shake userLogAnim = new Shake(loginField);
+                Shake  userLogPass = new Shake(passwordField);
+                userLogAnim.playAnim();
+                userLogPass.playAnim();
             }
             DatabaseHandler db = null;
             try {
@@ -68,31 +78,17 @@ public class OpenPageController {
 
 
         });
+        //when you click on the SignUp button, you go to the user registration page
         buttonSignUp.setOnAction(event -> {
-//            buttonSignUp.getScene().getWindow().hide();
-//
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getResource("/com/petproject/createAcPage.fxml"));
-//
-//            try {
-//                loader.load();
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//            Parent root = loader.getRoot();
-//            Stage stage = new Stage();
-//            stage.setScene(new Scene(root));
-//            stage.showAndWait();
             OpenSignUp("/com/petproject/createAcPage.fxml");
         });
     }
 
-    public TextField getEmailField() {
-        return emailField;
+    public TextField getLoginField() {
+        return loginField;
     }
 
-    private static int id;
-    String search="SELECT "+ Const.USERS_ID +" FROM "+ Const.USER_TABLE+" WHERE "+Const.USERS_LOGIN+ "=?";
+    //here it checks if the user is found in order to open the next page
     private void loginUser(String loginff, String passwordff) throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         User user = new User();
@@ -105,29 +101,24 @@ public class OpenPageController {
             id = result.getInt(1);
         }
         if (count==1) {
-            //buttonSignIn.setOnAction(event -> {
-//                int id = 0;
-//                try {
-//                    id = result.getInt(1);
-//                } catch (SQLException e) {
-//                    throw new RuntimeException(e);
-//                }
+
                 OpenPlayPage("/com/petproject/game.fxml");
-                //System.out.println(id);
-            //});
+
         }
         else{
-            Shake userLogAnim = new Shake(emailField);
+            Shake userLogAnim = new Shake(loginField);
             Shake  userLogPass = new Shake(passwordField);
             userLogAnim.playAnim();
             userLogPass.playAnim();
         }
     }
 
+    //getting ID
     public static int getId() {
         return id;
     }
 
+    //method to go to user registration page
     public void OpenSignUp(String window){
         buttonSignUp.getScene().getWindow().hide();
 
@@ -142,8 +133,11 @@ public class OpenPageController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Yelyzaveta Korniienkova");
         stage.showAndWait();
     }
+
+    //method to go to game page
     public void OpenPlayPage(String window){
         buttonSignIn.getScene().getWindow().hide();
 
@@ -159,6 +153,7 @@ public class OpenPageController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Yelyzaveta Korniienkova");
         stage.showAndWait();
     }
 

@@ -1,7 +1,6 @@
 package com.petproject.controllers;
 
 import java.io.IOException;
-import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 
@@ -17,14 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class GameControllers {
-    OpenPageController openPageController = new OpenPageController();
-
-    public int id_us= openPageController.getId();
-
-
-
-
-
 
         @FXML
         private Label balancelabel;
@@ -124,6 +115,10 @@ public class GameControllers {
         @FXML
         private Button regulationsb;
 
+    OpenPageController openPageController = new OpenPageController();
+
+    //get id by method getId by class openPageControlle
+    public int id_us= openPageController.getId();
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
@@ -134,6 +129,7 @@ public class GameControllers {
         disable4();
         disable5();
         negativeBalance();
+        //when you click on the rules button, a page with rules appears
         regulationsb.setOnAction(event->{
             regulationsb.getScene().getWindow().hide();
 
@@ -148,6 +144,7 @@ public class GameControllers {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setTitle("Yelyzaveta Korniienkova");
             stage.show();
             try {
                 cancelBet();
@@ -155,42 +152,11 @@ public class GameControllers {
                 throw new RuntimeException(e);
             }
         });
-        nextb.setOnAction(event->{
-            nextb.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/com/petproject/game.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            try {
-                cancelBet();
-            } catch (SQLException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-//        balancebutton.setOnAction(event -> {
-//            DatabaseHandler dbHandler= null;
-//            try {
-//                dbHandler = new DatabaseHandler();
-//            } catch (SQLException | ClassNotFoundException e) {
-//                throw new RuntimeException(e);
-//            }
-//            try {
-//                balancelabel.setText("Balance: "+dbHandler.getBalance(id_us));
-//            } catch (SQLException | ClassNotFoundException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });
+        //there is a check whether the winning button is pressed, if it is winning,
+        // the win() method is executed, if not, the noWin() method
         int[] apples1 = new int[5];
-        met(apples1);
+        generateButtons(apples1);
         but10.setOnAction(event -> {
             if (apples1[0]==0) {
                 win();
@@ -229,10 +195,8 @@ public class GameControllers {
         });
 
 
-            int[] apples2= new int[5];
-            met(apples2);
-
-
+        int[] apples2= new int[5];
+        generateButtons(apples2);
         but20.setOnAction(event -> {
             if (apples2[0]==0) {
                 win2();
@@ -272,8 +236,7 @@ public class GameControllers {
 
 
         int[] apples3= new int[5];
-        met2(apples3);
-
+        generateButtons2(apples3);
         but30.setOnAction(event -> {
             if (apples3[0]==0) {
                 win3();
@@ -313,8 +276,7 @@ public class GameControllers {
 
 
         int[] apples4= new int[5];
-        met3(apples4);
-
+        generateButtons3(apples4);
         but40.setOnAction(event -> {
             if (apples4[0]==0) {
                 win4();
@@ -352,12 +314,8 @@ public class GameControllers {
             disable4();
         });
 
-
-
         int[] apples5=new int[5];
-        met4(apples5);
-
-
+        generateButtons4(apples5);
         but50.setOnAction(event -> {
             if (apples5[0]==0) {
                 try {
@@ -415,20 +373,6 @@ public class GameControllers {
             disable5();
         });
 
-
-//        bet10.setOnAction(event ->{
-//            DatabaseHandler db= null;
-//            try {
-//                db = new DatabaseHandler();
-//            } catch (SQLException | ClassNotFoundException e) {
-//                throw new RuntimeException(e);
-//            }
-//            try {
-//                db.getBet(id_us);
-//            } catch (SQLException | ClassNotFoundException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });
         stopb.setOnAction(event->{
             try {
                 winBet();
@@ -469,9 +413,32 @@ public class GameControllers {
             disableBet();
         });
 
-    }
+        nextb.setOnAction(event->{
+            nextb.getScene().getWindow().hide();
 
-    public int[] met(int[] apples1){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/com/petproject/game.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Yelyzaveta Korniienkova");
+            stage.show();
+            try {
+                cancelBet();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+    }
+    //win button generation
+    public int[] generateButtons(int[] apples1){
         for(int i=0; i<5; i++){
             apples1[i]=0;
         }
@@ -480,7 +447,8 @@ public class GameControllers {
         return apples1;
     }
 
-    public int[] met2(int[] apple) {
+    //generation of winning buttons in row#3
+    public int[] generateButtons2(int[] apple) {
         int sumHelp = 0;
         for (int j = 0; j < 5; j++) {
             apple[j] = 0;
@@ -496,7 +464,8 @@ public class GameControllers {
         return apple;
     }
 
-    public int[] met3(int[] appless) {
+    //generation of winning buttons in row#4
+    public int[] generateButtons3(int[] appless) {
         int sumHelp = 0;
         for (int j = 0; j < 5; j++) {
             appless[j] = 0;
@@ -512,7 +481,8 @@ public class GameControllers {
         return appless;
     }
 
-    public int[] met4(int[] apples) {
+    //generation of winning buttons in row#5
+    public int[] generateButtons4(int[] apples) {
 
         for (int j = 0; j < 5; j++) {
             apples[j] = 1;
@@ -521,14 +491,8 @@ public class GameControllers {
         return apples;
     }
 
-    //    public void Bett() throws SQLException, ClassNotFoundException {
-//        DatabaseHandler dbHandler = new DatabaseHandler();
-//
-//        String bet = betf.getText();
-//        User user = new User(bet);
-//        dbHandler.getBalance(id_us);
-//    }
 
+    //if a win button is selected, the odds increase and a win message appears
     public void win(){
         DatabaseHandler dbHandler= null;
         try {
@@ -552,6 +516,7 @@ public class GameControllers {
         able2();
 
     }
+    //if a win button is selected, the odds increase and a win message appears
     public void win2(){
         DatabaseHandler dbHandler= null;
         try {
@@ -578,8 +543,8 @@ public class GameControllers {
             throw new RuntimeException(e);
         }
 
-
     }
+    //if a win button is selected, the odds increase and a win message appears
     public void win3(){
         DatabaseHandler dbHandler= null;
         try {
@@ -606,8 +571,8 @@ public class GameControllers {
             throw new RuntimeException(e);
         }
 
-
     }
+    //if a win button is selected, the odds increase and a win message appears
     public void win4(){
         DatabaseHandler dbHandler= null;
         try {
@@ -636,6 +601,7 @@ public class GameControllers {
 
 
     }
+    //if a win button is selected, the odds increase and a win message appears
     public void win5() throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler= null;
         try {
@@ -661,15 +627,12 @@ public class GameControllers {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        disableBet();
 
 
     }
 
-    public void betWin() throws SQLException, ClassNotFoundException {
-        DatabaseHandler db=null;
-        db=new DatabaseHandler();
-        winl.setText(db.getBetWin(id_us));
-    }
+    //balance getting method
     public void getBalance() throws SQLException, ClassNotFoundException {
 
         DatabaseHandler db = null;
@@ -684,6 +647,8 @@ public class GameControllers {
         balancelabel.setText("Balance: "+result);
 
     }
+
+    //if a non-winning button is selected, a message appears and the buttons become inactive
     public void noWin(){
 
             resultl.setText("You didn't win, try again! ");
@@ -696,6 +661,7 @@ public class GameControllers {
 
     }
 
+    //changing the balance when a player wins
     public void winBet() throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler= null;
         try {
@@ -719,7 +685,7 @@ public class GameControllers {
     }
 
 
-
+    //buttons become inactive
     public void disable1(){
         but10.setDisable(true);
         but11.setDisable(true);
@@ -756,7 +722,11 @@ public class GameControllers {
         but53.setDisable(true);
         but54.setDisable(true);
     }
+    public void disableBet(){
+        bet500.setDisable(true);
+    }
 
+    //buttons become active
     public void able1(){
         but10.setDisable(false);
         but11.setDisable(false);
@@ -792,10 +762,8 @@ public class GameControllers {
         but53.setDisable(false);
         but54.setDisable(false);
     }
-    public void disableBet(){
-        bet500.setDisable(true);
-    }
 
+    //adding bet to database
     private void createBet(int id_us) throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         String bet = betf.getText();
@@ -811,11 +779,14 @@ public class GameControllers {
         }
     }
 
+    //bet reset
     private void cancelBet() throws SQLException, ClassNotFoundException {
         DatabaseHandler db = null;
         db = new DatabaseHandler();
         db.cancelBet(id_us);
     }
+
+    //negative balance action
     public void negativeBalance() throws SQLException, ClassNotFoundException {
         DatabaseHandler db = null;
         try {

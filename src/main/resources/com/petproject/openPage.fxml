@@ -17,7 +17,7 @@
                </font></Label>
             <Button id="buttonSignIn" fx:id="buttonSignIn" layoutX="137.0" layoutY="245.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="106.0" text="Sign In" />
             <Button id="buttonSignUp" fx:id="buttonSignUp" layoutX="415.0" layoutY="245.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="106.0" text="Sign Up" />
-            <TextField fx:id="emailField" layoutX="116.0" layoutY="101.0" promptText="email" />
+            <TextField fx:id="loginField" layoutX="116.0" layoutY="101.0" promptText="email" />
             <PasswordField fx:id="passwordField" layoutX="116.0" layoutY="153.0" promptText="password" />
          </children>
       </AnchorPane>

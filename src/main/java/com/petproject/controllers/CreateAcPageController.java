@@ -46,6 +46,8 @@ public class CreateAcPageController {
 
     @FXML
     void initialize() {
+        //when you click the button, adding a user using
+        // the signUpNewUser() method and going to the home page
         ButtonSignUp.setOnAction(event -> {
 
             try {
@@ -60,12 +62,13 @@ public class CreateAcPageController {
         });
     }
 
+    //go to home page
     public void OpenSignIn(String window){
         ButtonSignUp.getScene().getWindow().hide();
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window));
-        Label label = new Label("My label");
+        Label label = new Label("Yelyzaveta Korniienkova");
 
         try {
             loader.load();
@@ -77,6 +80,8 @@ public class CreateAcPageController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    //method to add a new user
     private void signUpNewUser() throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler = new DatabaseHandler();
 
@@ -84,8 +89,6 @@ public class CreateAcPageController {
         String lastName= lastnamef.getText();
         String password=passwordf.getText();
         String login=loginf.getText();
-        int balance=100;
-        int bet=0;
         User user = new User(firstName, lastName, login, password);
         try {
             dbHandler.signUpUser(user);
