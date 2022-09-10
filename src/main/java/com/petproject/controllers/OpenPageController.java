@@ -113,7 +113,10 @@ public class OpenPageController {
         }
     }
 
-    //getting ID
+
+    /**
+     * @return ID
+     */
     public static int getId() {
         return id;
     }

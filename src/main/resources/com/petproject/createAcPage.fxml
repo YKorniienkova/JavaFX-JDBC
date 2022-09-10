@@ -11,7 +11,7 @@
    <children>
       <AnchorPane layoutY="79.0" prefHeight="518.0" prefWidth="800.0" style="-fx-background-color: #3C367D;">
          <children>
-            <TextField id="login" fx:id="loginf" layoutX="117.0" layoutY="152.0" promptText="Email" />
+            <TextField id="login" fx:id="loginf" layoutX="117.0" layoutY="152.0" promptText="Login" />
             <Label layoutX="276.0" layoutY="28.0" prefHeight="18.0" prefWidth="213.0" text="Create an account" textFill="#f2a0a0">
                <font>
                   <Font size="16.0" />

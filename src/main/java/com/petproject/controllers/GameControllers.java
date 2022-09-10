@@ -21,7 +21,7 @@ public class GameControllers {
         private Label balancelabel;
 
         @FXML
-        private Button bet500;
+        private Button setBet;
 
         @FXML
         private TextField betf;
@@ -117,7 +117,9 @@ public class GameControllers {
 
     OpenPageController openPageController = new OpenPageController();
 
-    //get id by method getId by class openPageControlle
+    /**
+     * get id by method getId by class openPageControlle
+     */
     public int id_us= openPageController.getId();
 
     @FXML
@@ -387,7 +389,7 @@ public class GameControllers {
 
         });
 
-        bet500.setOnAction(event->{
+        setBet.setOnAction(event->{
 
             try {
                 createBet(id_us);
@@ -437,7 +439,10 @@ public class GameControllers {
         });
 
     }
-    //win button generation
+
+    /**
+     * generation of winning buttons in row#1 and 2
+     */
     public int[] generateButtons(int[] apples1){
         for(int i=0; i<5; i++){
             apples1[i]=0;
@@ -447,7 +452,9 @@ public class GameControllers {
         return apples1;
     }
 
-    //generation of winning buttons in row#3
+    /**
+     * generation of winning buttons in row#5
+     */
     public int[] generateButtons2(int[] apple) {
         int sumHelp = 0;
         for (int j = 0; j < 5; j++) {
@@ -464,7 +471,9 @@ public class GameControllers {
         return apple;
     }
 
-    //generation of winning buttons in row#4
+    /**
+     * generation of winning buttons in row#4
+     */
     public int[] generateButtons3(int[] appless) {
         int sumHelp = 0;
         for (int j = 0; j < 5; j++) {
@@ -481,7 +490,10 @@ public class GameControllers {
         return appless;
     }
 
-    //generation of winning buttons in row#5
+
+    /**
+     * generation of winning buttons in row#5
+     */
     public int[] generateButtons4(int[] apples) {
 
         for (int j = 0; j < 5; j++) {
@@ -492,7 +504,9 @@ public class GameControllers {
     }
 
 
-    //if a win button is selected, the odds increase and a win message appears
+    /**
+     * //if a win button is selected, the odds increase and a win message appears
+     */
     public void win(){
         DatabaseHandler dbHandler= null;
         try {
@@ -516,7 +530,10 @@ public class GameControllers {
         able2();
 
     }
-    //if a win button is selected, the odds increase and a win message appears
+
+    /**
+     * if a win button is selected, the odds increase and a win message appears
+     */
     public void win2(){
         DatabaseHandler dbHandler= null;
         try {
@@ -544,7 +561,10 @@ public class GameControllers {
         }
 
     }
-    //if a win button is selected, the odds increase and a win message appears
+
+    /**
+     * //if a win button is selected, the odds increase and a win message appears
+     */
     public void win3(){
         DatabaseHandler dbHandler= null;
         try {
@@ -572,7 +592,10 @@ public class GameControllers {
         }
 
     }
-    //if a win button is selected, the odds increase and a win message appears
+
+    /**
+     * //if a win button is selected, the odds increase and a win message appears
+     */
     public void win4(){
         DatabaseHandler dbHandler= null;
         try {
@@ -601,7 +624,10 @@ public class GameControllers {
 
 
     }
-    //if a win button is selected, the odds increase and a win message appears
+
+    /**
+     * if a win button is selected, the odds increase and a win message appears
+     */
     public void win5() throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler= null;
         try {
@@ -632,7 +658,9 @@ public class GameControllers {
 
     }
 
-    //balance getting method
+    /**
+     * balance getting method
+     */
     public void getBalance() throws SQLException, ClassNotFoundException {
 
         DatabaseHandler db = null;
@@ -648,7 +676,9 @@ public class GameControllers {
 
     }
 
-    //if a non-winning button is selected, a message appears and the buttons become inactive
+    /**
+     * if a non-winning button is selected, a message appears and the buttons become inactive
+     */
     public void noWin(){
 
             resultl.setText("You didn't win, try again! ");
@@ -657,11 +687,14 @@ public class GameControllers {
         disable3();
         disable4();
         disable5();
-        bet500.setDisable(true);
+        setBet.setDisable(true);
 
     }
 
-    //changing the balance when a player wins
+
+    /**
+     * changing the balance when a player wins
+     */
     public void winBet() throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler= null;
         try {
@@ -685,7 +718,9 @@ public class GameControllers {
     }
 
 
-    //buttons become inactive
+    /**
+     * //buttons in row1 become inactive
+     */
     public void disable1(){
         but10.setDisable(true);
         but11.setDisable(true);
@@ -694,6 +729,9 @@ public class GameControllers {
         but14.setDisable(true);
     }
 
+    /**
+     * //buttons in row2 become inactive
+     */
     public void disable2(){
         but20.setDisable(true);
         but21.setDisable(true);
@@ -701,6 +739,10 @@ public class GameControllers {
         but23.setDisable(true);
         but24.setDisable(true);
     }
+
+    /**
+     * //buttons in row3 become inactive
+     */
     public void disable3(){
         but30.setDisable(true);
         but31.setDisable(true);
@@ -708,6 +750,10 @@ public class GameControllers {
         but33.setDisable(true);
         but34.setDisable(true);
     }
+
+    /**
+     * //buttons in row4 become inactive
+     */
     public void disable4(){
         but40.setDisable(true);
         but41.setDisable(true);
@@ -715,6 +761,10 @@ public class GameControllers {
         but43.setDisable(true);
         but44.setDisable(true);
     }
+
+    /**
+     * //buttons in row5 become inactive
+     */
     public void disable5(){
         but50.setDisable(true);
         but51.setDisable(true);
@@ -722,11 +772,18 @@ public class GameControllers {
         but53.setDisable(true);
         but54.setDisable(true);
     }
+
+    /**
+     * button setBet become inactive
+     */
     public void disableBet(){
-        bet500.setDisable(true);
+        setBet.setDisable(true);
     }
 
-    //buttons become active
+
+    /**
+     * //buttons become active
+     */
     public void able1(){
         but10.setDisable(false);
         but11.setDisable(false);
@@ -734,6 +791,10 @@ public class GameControllers {
         but13.setDisable(false);
         but14.setDisable(false);
     }
+
+    /**
+     * //buttons become active
+     */
     public void able2(){
         but20.setDisable(false);
         but21.setDisable(false);
@@ -741,6 +802,10 @@ public class GameControllers {
         but23.setDisable(false);
         but24.setDisable(false);
     }
+
+    /**
+     * //buttons become active
+     */
     public void able3(){
         but30.setDisable(false);
         but31.setDisable(false);
@@ -748,6 +813,10 @@ public class GameControllers {
         but33.setDisable(false);
         but34.setDisable(false);
     }
+
+    /**
+     * //buttons become active
+     */
     public void able4(){
         but40.setDisable(false);
         but41.setDisable(false);
@@ -755,6 +824,10 @@ public class GameControllers {
         but43.setDisable(false);
         but44.setDisable(false);
     }
+
+    /**
+     * //buttons become active
+     */
     public void able5(){
         but50.setDisable(false);
         but51.setDisable(false);
@@ -763,7 +836,10 @@ public class GameControllers {
         but54.setDisable(false);
     }
 
-    //adding bet to database
+
+    /**
+     * adding bet to database
+     */
     private void createBet(int id_us) throws SQLException, ClassNotFoundException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         String bet = betf.getText();
@@ -779,14 +855,20 @@ public class GameControllers {
         }
     }
 
-    //bet reset
+
+    /**
+     * bet reset
+     */
     private void cancelBet() throws SQLException, ClassNotFoundException {
         DatabaseHandler db = null;
         db = new DatabaseHandler();
         db.cancelBet(id_us);
     }
 
-    //negative balance action
+
+    /**
+     * negative balance action
+     */
     public void negativeBalance() throws SQLException, ClassNotFoundException {
         DatabaseHandler db = null;
         try {

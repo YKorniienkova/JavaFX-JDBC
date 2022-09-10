@@ -16,7 +16,12 @@ public class DatabaseHandler extends Configs {
     public DatabaseHandler() throws SQLException, ClassNotFoundException {
     }
 
-    //database connection
+
+    /**
+     * @return database connection
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String connectionString = "jdbc:mysql://" + dbHost + ":"
                 + dbPort + "/" + dbName + "?" + "autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -27,7 +32,10 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    //adding a user to the database
+
+    /**
+     * adding a user to the database
+     */
     public void signUpUser(User user) throws SQLException, ClassNotFoundException {
         String insert= "INSERT INTO "+Const.USER_TABLE+"("+Const.USERS_NAME+","+Const.USERS_LASTNAME+","+Const.USERS_LOGIN
                 +","+Const.USERS_PASSWORD+")"+"VALUES(?,?,?,?)";
@@ -45,7 +53,10 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-    //getting login and password
+
+    /**
+     * getting login and password
+     */
     public ResultSet getUser(User user) throws SQLException, ClassNotFoundException {
         ResultSet resSet=null;
 
@@ -63,7 +74,9 @@ public class DatabaseHandler extends Configs {
         return resSet;
     }
 
-    //getting a balance
+    /**
+     * getting a balance
+     */
     public double getBalance( int id) throws SQLException, ClassNotFoundException {
         ResultSet resSet = null;
 
@@ -79,7 +92,10 @@ public class DatabaseHandler extends Configs {
         return idd;
     }
 
-    //changing the bet depending on the row number
+
+    /**
+     * changing the bet depending on the row number
+     */
     public void setBet1(int id) throws SQLException, ClassNotFoundException {
 
         String setBet = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BETF +"="
@@ -90,7 +106,9 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    //changing the bet depending on the row number
+    /**
+     * changing the bet depending on the row number
+     */
     public void setBet2(int id) throws SQLException, ClassNotFoundException {
 
         String setBet = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BETF +"="
@@ -101,7 +119,9 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    //changing the bet depending on the row number
+    /**
+     * changing the bet depending on the row number
+     */
     public void setBet3(int id) throws SQLException, ClassNotFoundException {
 
         String setBet = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BETF +"="
@@ -112,7 +132,9 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    //changing the bet depending on the row number
+    /**
+     * changing the bet depending on the row number
+     */
     public void setBet4(int id) throws SQLException, ClassNotFoundException {
 
         String setBet = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BETF +"="
@@ -123,7 +145,9 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    //changing the bet depending on the row number
+    /**
+     * changing the bet depending on the row number
+     */
     public void setBet5(int id) throws SQLException, ClassNotFoundException {
 
         String setBet = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BETF +"="
@@ -134,7 +158,10 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    //getting a winning bet
+
+    /**
+     * getting a winning bet
+     */
     public String getBetWin(int id) throws SQLException, ClassNotFoundException {
         ResultSet resSet = null;
         String getBet = "SELECT " + Const.USERS_BETF + " FROM " + Const.USER_TABLE + " WHERE " + Const.USERS_ID + "=" + id;
@@ -149,11 +176,14 @@ public class DatabaseHandler extends Configs {
         return res;
     }
 
-    //raise the balance
+
+    /**
+     * raise the balance
+     */
     public void setBalancePlus(int id) throws SQLException, ClassNotFoundException {
 
         String setBalance = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BALANCE+"="
-                +Const.USERS_BALANCE+"+"+Const.USERS_BETF +"-"+Const.USER_BETRES+
+                +Const.USERS_BALANCE+"+"+Const.USERS_BETF +
                 " WHERE "+Const.USERS_ID+"="+id;
 
         PreparedStatement prSt=getDbConnection().prepareStatement(setBalance);
@@ -161,7 +191,10 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    //decrease the balance
+
+    /**
+     * decrease the balance
+     */
     public void setBalanceMinus(int id) throws SQLException, ClassNotFoundException {
 
         String setBalance = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BALANCE+"="
@@ -173,7 +206,10 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    //creating a bet
+
+    /**
+     * creating a bet
+     */
     public void createBet(int id, User user) throws SQLException, ClassNotFoundException {
         String createBet = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BETF +"=? "+" WHERE "+Const.USERS_ID+"="+id;
         PreparedStatement prSt=getDbConnection().prepareStatement(createBet);
@@ -193,7 +229,10 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-    //bet reset
+
+    /**
+     * bet reset
+     */
     public void cancelBet(int id) throws SQLException, ClassNotFoundException {
         String createBet = "UPDATE "+Const.USER_TABLE+" SET "+Const.USERS_BETF +"=0"+" WHERE "+Const.USERS_ID+"="+id;
         PreparedStatement prSt=getDbConnection().prepareStatement(createBet);

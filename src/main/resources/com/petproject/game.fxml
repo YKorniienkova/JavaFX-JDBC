@@ -35,7 +35,7 @@
             <Button fx:id="but21" layoutX="220.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
             <Button fx:id="but12" layoutX="340.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
             <Button fx:id="but11" layoutX="220.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="bet500" layoutX="100.0" layoutY="424.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Place a bet" />
+            <Button fx:id="setBet" layoutX="100.0" layoutY="424.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Place a bet" />
             <TextField fx:id="betf" layoutX="213.0" layoutY="424.0" promptText="Bet" />
             <Label fx:id="balancelabel" layoutX="100.0" layoutY="472.0" prefHeight="18.0" prefWidth="192.0" text="Balance:" textFill="#ff8888">
                <font>
