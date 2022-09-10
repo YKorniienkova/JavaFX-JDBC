@@ -4,5 +4,5 @@ This project is a game similar to "Apples of Fortune". The player must choose 1 
 Technology:
 Java
 
-Application:
+Usages:
 You must clone this project on your computer, then import the database (CASINODATA), then open the project in the development environment and change the values "Configs" to yours
